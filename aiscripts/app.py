@@ -4,7 +4,7 @@ from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
 import openai
 from pydantic import BaseModel
-openai.api_key = "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"
+openai.api_key = "<API KEY>"
 
 app = FastAPI()
 app.add_middleware(
