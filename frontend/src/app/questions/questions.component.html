@@ -1,0 +1,39 @@
+<mat-card class="question-container">
+  <div *ngIf="!questions" class="spinner-grow text primary" style="height: 100%; width: 100%">
+    <h1>
+      Loading
+    </h1>
+  </div>
+  <div *ngIf="questions" class="quiz">
+    <div *ngIf="!showResults" class="questions">
+      <app-question-form [question]="questions[currentQuestionIndex]" (onChoiceMade)="updateChoice($event)">
+      </app-question-form>
+      <mat-card-actions align="center">
+        <button mat-raised-button class="btn btn-success" color="primary" (click)="nextOrViewResults()"
+          [disabled]="!this.answer">
+          Next
+        </button>
+      </mat-card-actions>
+    </div>
+    <div *ngIf="showResults">
+      <div class="results">
+        <mat-card class="results-container">
+          <div class="answer" [ngClass]="{correct: this.questions[this.currentQuestionIndex].choices[this.userSelectedIndex] === this.answer}">
+            <p class="question-repeat">{{questions[this.currentQuestionIndex].label}}</p>
+            <p class="your-answer">Your answer: {{this.userSelectedAnswer}}</p>
+            <p class="wrong-right">Correct answer: {{questions[this.currentQuestionIndex].reason}}</p>
+          </div>
+        </mat-card>
+      </div>
+      <div class="center">
+        <a routerLinFk="/welcome">
+          <button mat-raised-button color="red" class="btn btn-danger" style="margin-right: 20px">Quit</button>
+        </a>
+        <button mat-raised-button class="btn btn-success" color="primary" (click)="nextOrViewResults()">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+
+</mat-card>

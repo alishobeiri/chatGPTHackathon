@@ -1,0 +1,16 @@
+<div class="results">
+  <mat-card class="results-container">
+    <div class="answer" *ngFor="let a of answers.values; let i=index" [ngClass]="{correct: a.correct}">
+      <p class="question-repeat">{{questions[i].label}}</p>
+      <p class="your-answer">{{a.value}} --- <span
+          class="wrong-right">{{a.correct ? 'well done!' : 'oops, maybe next time'}}</span>
+      </p>
+
+    </div>
+  </mat-card>
+</div>
+<div class="center">
+  <a routerLinFk="/welcome">
+    <button mat-raised-button color="primary" class="btn btn-primary">Next</button>
+  </a>
+</div>
